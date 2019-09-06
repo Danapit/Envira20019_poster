@@ -1,2 +1,2 @@
 # Envira2019_poster
-Poster: ENVIRA 2019 (Ransby et al.)
+[ENVIRA 2019](http://www.envira2019.cz/ "ENVIRA home page") poster
