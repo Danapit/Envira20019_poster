@@ -1,0 +1,158 @@
+% Poster with TikZ
+% Author: Dana Ransby
+% Based on: Stefan Kottwitz, https://www.packtpub.com/hardware-and-creative/latex-cookbook
+\documentclass[portrait]{tikzposter}
+%\documentclass[landscape]{tikzposter}
+\usecolorstyle{Denmark}
+\usepackage{tkz-euclide}% for geometry
+\usepackage{multicol}% for multiple columns
+
+\makeatletter %new counter for tables
+\newcounter{tablecounter}
+\newenvironment{tikztable}[1][]{
+  \def \rememberparameter{#1}
+  \vspace{10pt}
+  \refstepcounter{tablecounter}
+  \begin{center}
+  }{
+    \ifx\rememberparameter\@empty
+    \else
+    \\[10pt]
+    {\small Tab.~\thetablecounter: \rememberparameter}
+    \fi
+  \end{center}
+}
+\makeatother % end: new counter for tables
+
+\setlength{\columnsep}{4cm}
+\setlength{\columnseprule}{1mm}
+\newcommand*{\image}[2][]{% For conveniently including images
+  \begin{tikzfigure}[#1]
+    \includegraphics[width=\linewidth]{#2}
+   \end{tikzfigure}}
+\usepackage{lmodern}
+\renewcommand*{\familydefault}{\sfdefault}% Let's have a sans serif font
+
+\begin{document}
+\title{Radioactivity in North Atlantic deep water corals}
+\author{Dana Ransby$^{1/2}$, Patric Lindahl$^3$, Jixin Qiao$^4$, Gerd Marissens$^5$, Mikael Hult$^5$ }
+\institute{\small 
+$^1$Institute of Environmental Physics, University of Bremen, Bremen, Germany, $^2$Alfred Wegener Institute, Helmholtz Centre for Polar and Marine Research, Bremerhaven, Germany\\
+$^3$Swedish Radiation Safety Authority, Stockholm, Sweden, $^4$Technical University of Denmark, Roskilde, Denmark\\
+$^5$Joint Research Centre -- JRC, Geel, Belgium}
+
+\maketitle
+
+\block{Deep water corals as natural archives}{
+	
+	\begin{center}
+	Advantages and limitations of different natural archives for reconstructing ocean changes in the Anthropocene:
+	\end{center}
+\begin{tikztable}%[optional caption]
+	\begin{tabular}{ l | l | l }
+  \hline			
+  Natural archives & Advantages & Limitations \\
+	\hline	
+  Sediment cores & No restrictions on samples due to protection of species & Typically lower resolution (low sedimentation rates) in deeper ocean  \\
+  & Usually better availability of samples (core archives) & Post-depositional effects (physical, chemical) \\
+	&	Sample sizes usually higher (easier analytical detection) & Sediment focusing \\
+	& & Sampling of ``the entire water column''  \\
+	 \hline
+	Tropical corals (e.g., \textit{Porites})  & Excellent (sub-seasonal) resolution &  Only surface ocean (photic zone) information \\
+	& Well resolved yearly increments (precise  dating possible) & Only information from tropical /  subtropical regions \\
+	 \hline
+	Deep water corals (e.g., \textit{Lophelia}) & Information on deeper ocean processes & \\
+	& Information also from temperate to high latitude regions & Not well resolved yearly increments (difficult dating)\\
+  \hline
+
+\end{tabular} 
+\end{tikztable}
+}
+
+
+\begin{columns}
+  \column{.30}
+  \block{\textit{Lophelia pertusa}}{
+
+		\begin{itemize}
+			\item a cosmopolitan deep water coral species in the Atlantic Ocean
+			\item occurring in wide range of depths
+			\item forms bush-like colonies that may grow several metres across
+			\item dead basal framework starts generally after 17--20 live polyp generations
+			\item growth rates were estimated 5--34 mm$\cdot$yr$^{-1}$ (Roberts et al. 2009 and references therein)
+		\end{itemize}
+
+\image{Lophelia_MARUM.jpg}
+  }
+  
+	\column{.40}
+  \block{Sampling}{
+	\image{map.pdf}	
+  }
+	
+	\column{.30}
+	\block{Area 2}{
+	Species: \textit{Lophelia pertusa} \\
+	
+  Sampling: RRS James Cook 073 cruise (2012) \\
+	
+	Location: Outer Hebrides, NE Atlantic, 	Mingulay Reef, 
+  120 m water depth \\
+	
+	\textit{Samples provided: Prof J Murray Roberts, University of Edinburgh, UK}
+	}
+	
+	\subcolumn{.32}
+	\block{Area 1}{
+	Species: \textit{Lophelia pertusa} \\
+	
+  Sampling: RV Poseidon POS400 cruise (2010) \\
+	
+	Location: SW off Ireland, NE Atlantic,	Pollux Mound, 
+  940 m water depth \\
+	
+	\textit{Samples provided: Prof André Freiwald, Senckenberg am Meer, Wilhelmshaven, Germany}}
+	
+\end{columns}
+				
+\begin{columns}
+  \column{1}
+\block{Gamma spectrometry: HADES underground laboratory, JRC-Geel }{
+  \begin{multicols}{2}
+\begin{itemize}
+	\item Underground HADES (well detector Ge14): 2.57 kg and 120\% rel. eff.
+	\item	Above ground LMS at IUP (low level coaxial detector 3): 1.0 kg and 50\% rel. eff.
+	\item	Coral spectrum @HADES: 1.192 g coral measured over 14 days
+\end{itemize}
+  \end{multicols}
+	\image{spectra.png}
+}
+
+\note[targetoffsetx=30 cm, targetoffsety=0cm, angle=90, radius=3cm,
+width=15cm, rotate=0, connection, linewidth=2cm,
+roundedcorners=30, innersep=1cm]{
+\image{IMG_6727_burned.png}}
+
+\end{columns}
+
+
+\begin{columns}
+  \column{0.68}
+\block{Outlook }{
+  
+	 \begin{multicols}{2}
+    
+		\begin{itemize}
+			\item Coral chronology using $^{210}$Pb and $^{226}$Ra data from HADES
+			\item Artificial isotopes radiochemical analysis, mass spectrometry: U \& Pu isotopes
+			\item Are radioactive tracers in deep water corals suitable proxies for deeper water masses circulation in NE Atlantic Ocean?
+		\end{itemize}
+  \end{multicols}
+}
+\column{0.2}
+\block{References}{\small
+Roberts, J. M., et al. (2009). Cold-Water Corals: The Biology and Geology of Deep-Sea Coral Habitats, Cambridge University Press
+}
+\end{columns}
+	
+\end{document}
